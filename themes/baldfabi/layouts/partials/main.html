@@ -1,0 +1,32 @@
+<main class="flex-grow py-8">
+  <div class="container flex mx-auto">
+    <div class="flex-grow" id="content">
+        {{- block "main" . }}{{- end }}
+    </div>
+    <div class="max-w-lg">
+        <div class="bg-baldfabi-dark1 p-8 mb-8">
+            <h1>About</h1>
+            <p>
+                Hey, nice to meet you 🙂. My name is Fabian and I’m a Systems Engineer
+                from Germany. Over the last two decades I turned my hobby into my
+                profession.
+            </p>
+            <p>
+                Nowadays I work on so much different stuff and that’s the reason why I
+                started this blog. My goal is to write about all the different things I
+                learned and expirienced.
+            </p>
+            <p>Don’t be afraid to get in touch with me 😀</p>
+            {{ partial "socials" }}
+        </div>
+        <div class="bg-baldfabi-dark1 p-8">
+            <h1>Tags</h1>
+            <ul class="tags">
+                <li><a href="#">golang</a></li>
+                <li><a href="#">infrastructure</a></li>
+                <li><a href="#">python</a></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</main>

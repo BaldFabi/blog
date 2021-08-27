@@ -1,0 +1,35 @@
+@import "node_modules/@fontsource/saira/latin.css";
+@import "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "node_modules/@fortawesome/fontawesome-free/css/brands.css";
+@import "node_modules/tailwindcss/base";
+@import "node_modules/tailwindcss/components";
+@import "node_modules/tailwindcss/utilities";
+
+@layer base {
+  #content a {
+    @apply text-baldfabi-accent;
+  }
+
+  .container {
+    @apply px-4;
+  }
+
+  h1 {
+    @apply border-b-3 border-baldfabi-accent relative -top-1 text-2xl inline-block mb-6;
+  }
+
+  p {
+    @apply pb-4;
+  }
+
+  .tags {
+    @apply flex space-x-2;
+
+    li {
+      &::before {
+        content: "#";
+        @apply text-baldfabi-dark3;
+      }
+    }
+  }
+}

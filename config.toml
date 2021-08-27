@@ -1,0 +1,12 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'BaldFabi Blog'
+theme = 'baldfabi'
+
+[module]
+    [[module.mounts]]
+        source = "./node_modules/@fontsource/saira/files"
+        target = "static/css/files"
+    [[module.mounts]]
+        source = "./node_modules/@fortawesome/fontawesome-free/webfonts"
+        target = "static/webfonts"
