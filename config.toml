@@ -3,6 +3,10 @@ languageCode = 'en-us'
 title = 'BaldFabi Blog'
 theme = 'baldfabi'
 
+[taxanomies]
+    tag = "tags"
+    category = "categories"
+
 [module]
     [[module.mounts]]
         source = "./node_modules/@fontsource/saira/files"

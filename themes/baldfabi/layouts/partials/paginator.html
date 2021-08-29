@@ -1,0 +1,32 @@
+{{- $paginator := $.Paginator -}}
+{{- if gt $paginator.TotalPages 1 -}}
+<ul class="paginator">
+    {{- if $paginator.HasPrev -}}
+    <li><a href="{{ $paginator.First.URL }}" class="text-sm"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left relative -left-1"></i></a></li>
+    <li><a href="{{ $paginator.Prev.URL }}" class="text-sm"><i class="fas fa-chevron-left"></i></a></li>
+    {{- end -}}
+    {{- $ellipsed := false -}}
+    {{- $shouldEllipse := false -}}
+    {{- range $paginator.Pagers -}}
+    {{- $right := sub .TotalPages .PageNumber -}}
+    {{- $showNumber := or (le .PageNumber 3) (eq $right 0) -}}
+    {{- $showNumber := or $showNumber (and (gt .PageNumber (sub $paginator.PageNumber 2)) (lt .PageNumber (add $paginator.PageNumber 2))) -}}
+    {{- if $showNumber -}}
+        {{- $ellipsed = false -}}
+        {{- $shouldEllipse = false -}}
+    {{- else -}}
+        {{- $shouldEllipse = not $ellipsed -}}
+        {{- $ellipsed = true -}}
+    {{- end -}}
+    {{- if $showNumber -}}
+    <li><a href="{{ .URL }}" class="{{ if eq . $paginator }}active{{ end }}">{{- .PageNumber -}}</a></li>
+    {{- else if $shouldEllipse -}}
+    <li>&hellip;</li>
+    {{- end -}}
+    {{- end -}}
+    {{- if $paginator.HasNext -}}
+    <li><a href="{{ $paginator.Next.URL }}" class="text-sm"><i class="fas fa-chevron-right"></i></a></li>
+    <li><a href="{{ $paginator.Last.URL }}" class="text-sm"><i class="fas fa-chevron-right relative -right-1"></i><i class="fas fa-chevron-right"></i></a></li>
+    {{- end -}}
+</ul>
+{{- end -}}

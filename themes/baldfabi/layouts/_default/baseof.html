@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-    {{- partial "head.html" . -}}
-    <body class="bg-baldfabi-dark2 text-baldfabi-white flex flex-col min-h-screen">
-        {{- partial "header" . -}}
-        {{- partial "main" . -}}
-        {{- partial "footer" . -}}
-    </body>
+  <head>
+    {{- partial "head" . -}}
+  </head>
+  <body>
+    {{- partial "header" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer" . -}}
+  </body>
 </html>

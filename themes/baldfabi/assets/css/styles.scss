@@ -1,34 +1,75 @@
 @import "node_modules/@fontsource/saira/latin.css";
 @import "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
 @import "node_modules/@fortawesome/fontawesome-free/css/brands.css";
+@import "node_modules/@fortawesome/fontawesome-free/css/regular.css";
+@import "node_modules/@fortawesome/fontawesome-free/css/solid.css";
 @import "node_modules/tailwindcss/base";
 @import "node_modules/tailwindcss/components";
 @import "node_modules/tailwindcss/utilities";
 
 @layer base {
-  #content a {
-    @apply text-baldfabi-accent;
+  body {
+    @apply bg-baldfabi-dark2 text-baldfabi-white flex flex-col min-h-screen;
+  }
+
+  main {
+    p,
+    ul {
+      @apply mb-4;
+    }
+
+    .bg-baldfabi-dark1 {
+      *:last-child {
+        @apply mb-0;
+      }
+    }
+
+    #content {
+      p a,
+      ul a {
+        @apply text-baldfabi-accent hover:text-baldfabi-white transition-colors duration-300;
+      }
+
+      .paginator {
+        @apply flex space-x-1 justify-center mt-12;
+
+        li {
+          @apply rounded-full bg-baldfabi-dark1 w-8 h-8 text-center block;
+
+          a {
+            @apply h-full w-full block text-baldfabi-white hover:bg-baldfabi-accent rounded-full hover:text-baldfabi-dark1;
+
+            line-height: 2rem;
+          }
+        }
+      }
+    }
   }
 
   .container {
     @apply px-4;
   }
 
-  h1 {
-    @apply border-b-3 border-baldfabi-accent relative -top-1 text-2xl inline-block mb-6;
+  h1,
+  h2 {
+    @apply text-2xl mb-6 text-white;
+
+    span {
+      @apply border-b-3 border-baldfabi-accent;
+    }
   }
 
-  p {
-    @apply pb-4;
-  }
-
-  .tags {
-    @apply flex space-x-2;
-
+  ul.tags {
     li {
+      @apply inline-block whitespace-nowrap mr-2;
+
       &::before {
         content: "#";
         @apply text-baldfabi-dark3;
+      }
+
+      a {
+        @apply text-baldfabi-white;
       }
     }
   }
