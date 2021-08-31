@@ -7,6 +7,12 @@ theme = 'baldfabi'
     tag = "tags"
     category = "categories"
 
+[markup.highlight]
+    linenos = true
+    anchorLineNos = true
+    lineanchors = "L"
+    style = "dracula"
+
 [module]
     [[module.mounts]]
         source = "./node_modules/@fontsource/saira/files"
