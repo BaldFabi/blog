@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "baldfabi-accent": "#dbff00",
+        "baldfabi-accent": "#F6F740",
         "baldfabi-white": "#d0d0d0",
         "baldfabi-dark1": "#222",
         "baldfabi-dark2": "#333",
@@ -16,8 +16,8 @@ module.exports = {
       fontFamily: {
         sans: ['"Saira"', ...defaultTheme.fontFamily.sans]
       },
-      spacing: {
-        120: "30rem"
+      minWidth: {
+        96: "24rem"
       }
     }
   },

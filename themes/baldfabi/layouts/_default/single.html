@@ -1,34 +1,32 @@
 {{ define "main" }}
-<main class="flex-grow py-12">
-  <div class="container mx-auto max-w-screen-md" id="content">
-    <h2 class="text-center text-3xl mb-12">
-      <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
-    </h2>
-    <div class="flex space-x-8 justify-center mb-8">
-      <p>
-        <i class="far fa-clock text-sm"></i> {{ .ReadingTime }} minute{{ if gt
-        .ReadingTime 1 }}s{{ end }} to read
-      </p>
-      <p>
-        {{- $categoriesCount := len .Params.Categories -}}
-        <i class="far fa-folder-open text-sm"></i>
-        {{ range $i, $name := .Params.Categories -}}
-        <a
-        href="{{ "categories/" | relURL }}{{ $name | urlize }}">{{ $name }}</a>{{ if lt $i (sub $categoriesCount 1) }}, {{ end }}
-        {{ end -}}
-      </p>
-      <ul class="tags">
-        {{- range .Params.Tags -}}
-        <li><a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a></li>
-        {{- end -}}
-      </ul>
-    </div>
-    <p class="mb-12">
-      <img src="{{ .Permalink }}{{ .Resources.GetMatch "images/banner*" }}" />
+<div class="container mx-auto max-w-screen-md" id="content">
+  <h2 class="text-center text-3xl mb-12">
+    <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+  </h2>
+  <div class="flex space-x-8 justify-center mb-8">
+    <p>
+      <i class="far fa-clock text-sm"></i> {{ .ReadingTime }} minute{{ if gt
+      .ReadingTime 1 }}s{{ end }} to read
     </p>
-    <div id="single">
-      {{ .Content }}
-    </div>
+    <p>
+      {{- $categoriesCount := len .Params.Categories -}}
+      <i class="far fa-folder-open text-sm"></i>
+      {{ range $i, $name := .Params.Categories -}}
+      <a
+      href="{{ "categories/" | relURL }}{{ $name | urlize }}">{{ $name }}</a>{{ if lt $i (sub $categoriesCount 1) }}, {{ end }}
+      {{ end -}}
+    </p>
+    <ul class="tags">
+      {{- range .Params.Tags -}}
+      <li><a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a></li>
+      {{- end -}}
+    </ul>
   </div>
-</main>
+  <p class="mb-12">
+    <img src="{{ .Permalink }}{{ .Resources.GetMatch "images/banner*" }}" />
+  </p>
+  <div id="single">
+    {{ .Content }}
+  </div>
+</div>
 {{ end }}

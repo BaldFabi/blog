@@ -25,15 +25,20 @@
     }
   }
 
+  h2 {
+    line-height: 2.5rem;
+    @apply relative -top-2;
+  }
+
   #single {
     h2 {
-      @apply mt-16;
+      @apply pt-16;
     }
 
     h3,
     h4,
     h5 {
-      @apply text-xl mt-16 mb-4 text-white;
+      @apply text-xl pt-8 mb-4 text-white;
     }
 
     h4,
@@ -93,6 +98,25 @@
       @apply mx-auto;
     }
 
+    ul,
+    ol {
+      @apply pl-6;
+      list-style-type: square;
+
+      ul,
+      ol {
+        @apply mb-2 ml-4;
+      }
+    }
+
+    ol {
+      list-style-type: lower-roman;
+    }
+
+    blockquote {
+      @apply p-4 border-l-3 border-baldfabi-accent bg-baldfabi-dark1;
+    }
+
     section.footnotes p {
       @apply mb-0;
     }
@@ -101,6 +125,7 @@
   main {
     p,
     ul,
+    ol,
     pre,
     table,
     section,

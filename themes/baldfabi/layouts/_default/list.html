@@ -1,111 +1,107 @@
 {{ define "main" }}
-<main class="flex-grow my-12">
-  <div class="container flex flex-col mx-auto space-x-0 lg:space-x-12 lg:flex-row">
-    <div class="flex-grow mb-12" id="content">
-      <div class="grid sm:grid-cols-2 gap-12">
-        {{- $pages := .Pages -}}
-        {{- if .IsHome -}}
-          {{- $pages = .Site.RegularPages -}}
-        {{- end -}}
-        {{- $paginator := .Paginate (where $pages "Type" "posts") 6 -}}
-        {{ range $paginator.Pages }}
-        <div>
-          <div class="flex space-x-6">
-            <h2>
-              <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
-            </h2>
-            <p class="text-xl text-baldfabi-dark3 self-start">
+<div class="container flex flex-col mx-auto space-x-0 xl:space-x-12 xl:flex-row">
+  <div class="flex-grow mb-12" id="content">
+    <div class="grid sm:grid-cols-2 gap-12">
+      {{- $pages := .Pages -}}
+      {{- if .IsHome -}}
+        {{- $pages = .Site.RegularPages -}}
+      {{- end -}}
+      {{- $paginator := .Paginate (where $pages "Type" "posts") 6 -}}
+      {{ range $paginator.Pages }}
+      <div class="bg-baldfabi-dark1 p-8 flex flex-col">
+        <h2>
+          <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+        </h2>
+        <p>
+            <img src="{{ .Permalink }}{{ .Resources.GetMatch "images/banner*" }}" class="w-full" />
+        </p>
+        <div class="flex flex-col flex-grow">
+          <p class="flex-grow">
+            {{- .Description }} ... <a href="{{ .RelPermalink }}">read more</a>
+          </p>
+          <ul class="flex space-x-4 mb-2 pl-0 list-none">
+            <li>
+              <i class="far fa-clock text-sm"></i> {{ .ReadingTime }} minute{{ if
+              gt .ReadingTime 1 }}s{{ end }} to read
+            </li>
+            {{- if .Params.Categories -}}
+            <li>
+              {{- $categoriesCount := len .Params.Categories -}}
+              <i class="far fa-folder-open text-sm"></i>
+              {{ range $i, $name := .Params.Categories -}}
+              <a
+              href="{{ "categories/" | relURL }}{{ $name | urlize }}">{{ $name }}</a>{{ if lt $i (sub $categoriesCount 1) }}, {{ end }}
+              {{ end -}}
+            </li>
+            {{- end -}}
+            <li class="text-baldfabi-dark3">
               {{ time.Format "2006-01-02" .Date }}
-            </p>
-          </div>
-          <div class="2xl:flex 2xl:flex-row-reverse">
-            <p class="text-center 2xl:mb-0 mb-8">
-              <img src="{{ .Permalink }}{{ .Resources.GetMatch "images/banner*" }}" class="2xl:w-44" />
-            </p>
-            <div class="flex-grow">
-              <p>
-                {{- .Description }} ... <a href="{{ .RelPermalink }}">read more</a>
-              </p>
-              <ul class="flex space-x-4 mb-2">
-                <li>
-                  <i class="far fa-clock text-sm"></i> {{ .ReadingTime }} minute{{ if
-                  gt .ReadingTime 1 }}s{{ end }} to read
-                </li>
-                {{- if .Params.Categories -}}
-                <li>
-                  {{- $categoriesCount := len .Params.Categories -}}
-                  <i class="far fa-folder-open text-sm"></i>
-                  {{ range $i, $name := .Params.Categories -}}
-                  <a
-                  href="{{ "categories/" | relURL }}{{ $name | urlize }}">{{ $name }}</a>{{ if lt $i (sub $categoriesCount 1) }}, {{ end }}
-                  {{ end -}}
-                </li>
-                {{- end -}}
-              </ul>
-              <ul class="tags">
-                {{- range .Params.Tags -}}
-                <li><a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a></li>
-                {{- end -}}
-              </ul>
-            </div>
-          </div>
+            </li>
+          </ul>
+          <ul class="tags pl-0 list-none">
+            {{- range .Params.Tags -}}
+            <li><a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{- end -}}
+          </ul>
         </div>
-        {{ end }}
       </div>
-      {{ partial "paginator" . }}
+      {{ end }}
     </div>
-    <div class="lg:w-120 flex flex-col space-y-8">
-      <div class="bg-baldfabi-dark1 p-8">
-        <h2><span>About</span></h2>
-        <p>
-          Hey, nice to meet you 🙂. My name is Fabian and I’m a Systems Engineer
-          from Germany. Over the last two decades I turned my hobby into my
-          profession.
-        </p>
-        <p>
-          Nowadays I work on so much different stuff and that’s the reason why I
-          started this blog. My goal is to write about all the different things
-          I learned and expirienced.
-        </p>
-        <p>Don’t be afraid to get in touch with me 😀</p>
-        {{ partial "socials" }}
-      </div>
-      <div class="bg-baldfabi-dark1 p-8">
+    {{ partial "paginator" . }}
+  </div>
+  <div class="xl:min-w-96 flex flex-col lg:flex-row xl:flex-col lg:space-x-8 xl:space-x-0">
+    <div class="bg-baldfabi-dark1 p-8 mb-8">
+      <h2><span>About</span></h2>
+      <p>
+        Hey, nice to meet you 🙂. My name is Fabian and I’m a Systems Engineer
+        from Germany. Over the last two decades I turned my hobby into my
+        profession.
+      </p>
+      <p>
+        Nowadays I work on so much different stuff and that’s the reason why I
+        started this blog. My goal is to write about all the different things
+        I learned and expirienced.
+      </p>
+      <p>Don’t be afraid to get in touch with me 😀</p>
+      {{ partial "socials" }}
+    </div>
+    <div>
+      <div class="bg-baldfabi-dark1 p-8 mb-8">
         <h2><span>Categories</span> ({{ len .Site.Taxonomies.categories }})</h2>
         <ul>
-        {{- range $index, $taxonomy := .Site.Taxonomies.categories.Alphabetical
-        -}}
-        {{- $name := $taxonomy.Name -}}
-        <li><a href="{{ "categories/" | relURL }}{{ $name | urlize }}">{{ $name }} ({{ .Count }})</a></li>
-        {{- end -}}
+          {{- range $index, $taxonomy := .Site.Taxonomies.categories.Alphabetical
+          -}}
+          {{- $name := $taxonomy.Name -}}
+          <li><a href="{{ "categories/" | relURL }}{{ $name | urlize }}">{{ $name }} ({{ .Count }})</a></li>
+          {{- end -}}
         </ul>
       </div>
       <div class="bg-baldfabi-dark1 p-8">
         {{- $tagsCount := len .Site.Taxonomies.tags -}}
         <h2><span>Tags</span> ({{ $tagsCount }})</h2>
         <ul class="tags">
-        {{- range $index, $taxonomy := .Site.Taxonomies.tags.ByCount -}}
-        {{- $name := $taxonomy.Name -}}
-        {{- $perc := mul (div .Count (float $tagsCount)) 100 -}}
-        {{- $size := "" -}}
-        {{- if (ge $perc 80) -}}
-        {{- $size = "text-5xl" -}}
-        {{- else if and (ge $perc 60) (le $perc 80) -}}
-        {{- $size = "text-3xl" -}}
-        {{- else if and (ge $perc 40) (le $perc 60) -}}
-        {{- $size = "text-xl" -}}
-        {{- else if and (ge $perc 20) (le $perc 40) -}}
-        {{- $size = "text-base" -}}
-        {{- else -}}
-        {{- $size = "text-xs" -}}
-        {{- end -}}
-        <li class="{{ $size }}"><a
-            href="{{ "tags/" | relURL }}{{ $name | urlize }}">{{ $name }} ({{ .Count }})</a>
-        </li>
-        {{- end -}}
+          {{- range $index, $taxonomy := .Site.Taxonomies.tags.ByCount -}}
+          {{- $name := $taxonomy.Name -}}
+          {{- $perc := mul (div .Count (float $tagsCount)) 100 -}}
+          {{- $size := "" -}}
+          {{- if (ge $perc 80) -}}
+          {{- $size = "text-4xl" -}}
+          {{- else if and (ge $perc 60) (le $perc 80) -}}
+          {{- $size = "text-3xl" -}}
+          {{- else if and (ge $perc 40) (le $perc 60) -}}
+          {{- $size = "text-2xl" -}}
+          {{- else if and (ge $perc 20) (le $perc 40) -}}
+          {{- $size = "text-xl" -}}
+          {{- else -}}
+          {{- $size = "text-base" -}}
+          {{- end -}}
+          <li class="{{ $size }}"><a
+              href="{{ "tags/" | relURL }}{{ $name | urlize }}">{{ $name }} ({{ .Count }})</a>
+          </li>
+          {{- end -}}
         </ul>
       </div>
     </div>
   </div>
-</main>
+</div>
 {{ end }}
