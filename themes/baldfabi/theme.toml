@@ -2,11 +2,11 @@ name = "Baldfabi"
 license = "MIT"
 licenselink = "https://github.com/BaldFabi/blog/blob/master/themes/baldfabi/LICENSE"
 description = ""
-homepage = "http://example.com/"
+homepage = "https://baldfabi.dev/"
 tags = []
 features = []
 min_version = "0.41.0"
 
 [author]
   name = "BaldFabi"
-  homepage = ""
+  homepage = "https://baldfabi.dev"
