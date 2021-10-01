@@ -17,7 +17,10 @@ module.exports = {
         sans: ['"Saira"', ...defaultTheme.fontFamily.sans]
       },
       minWidth: {
-        96: "24rem"
+        140: "30rem"
+      },
+      maxWidth: {
+        140: "30rem"
       }
     }
   },

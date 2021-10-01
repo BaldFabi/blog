@@ -7,6 +7,7 @@
 @import "node_modules/tailwindcss/components";
 @import "node_modules/tailwindcss/utilities";
 
+/* purgecss start ignore */
 @layer base {
   body {
     @apply bg-baldfabi-dark2 text-baldfabi-white flex flex-col min-h-screen;
@@ -181,3 +182,4 @@
     }
   }
 }
+/* purgecss end ignore */
