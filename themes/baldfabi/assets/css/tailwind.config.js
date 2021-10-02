@@ -1,4 +1,6 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const themeDir = __dirname + "/../../";
+const { join } = require("path");
 
 module.exports = {
   theme: {
@@ -25,5 +27,9 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [],
+  purge: {
+    enabled: process.env.HUGO_ENVIRONMENT === "production",
+    content: [join(themeDir, "layouts/**/*.html")]
+  }
 };
