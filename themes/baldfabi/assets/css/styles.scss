@@ -17,8 +17,7 @@
     @apply px-4;
   }
 
-  h1,
-  h2 {
+  h1 {
     @apply text-2xl mb-6 text-white;
 
     span {
@@ -26,14 +25,9 @@
     }
   }
 
-  h2 {
-    line-height: 2.5rem;
-    @apply relative -top-2;
-  }
-
   #single {
     h2 {
-      @apply pt-16;
+      @apply text-2xl mb-6 pt-16;
     }
 
     h3,
@@ -130,7 +124,8 @@
     pre,
     table,
     section,
-    hr {
+    hr,
+    figure {
       @apply mb-8;
     }
 

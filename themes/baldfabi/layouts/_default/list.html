@@ -9,9 +9,9 @@
       {{- $paginator := .Paginate (where $pages "Type" "posts") 6 -}}
       {{ range $paginator.Pages }}
       <div class="bg-baldfabi-dark1 p-8 flex flex-col">
-        <h2>
+        <h1>
           <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
-        </h2>
+        </h1>
         <p>
             <img src="{{ .Permalink }}{{ .Resources.GetMatch "images/banner*" }}" class="w-full" />
         </p>
