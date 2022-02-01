@@ -51,7 +51,7 @@
   </div>
   <div class="xl:min-w-140 xl:max-w-140 flex flex-col lg:flex-row xl:flex-col lg:space-x-8 xl:space-x-0">
     <div class="bg-baldfabi-dark1 p-8 mb-8">
-      <h2><span>About</span></h2>
+      <h1><span>About</span></h1>
       <p>
         Hey, nice to meet you 🙂. My name is Fabian, and I’m a Systems Engineer
         from Germany. Over the last two decades, I turned my hobby into my
@@ -69,7 +69,7 @@
     </div>
     <div>
       <div class="bg-baldfabi-dark1 p-8 mb-8">
-        <h2><span>Categories</span> ({{ len .Site.Taxonomies.categories }})</h2>
+        <h1><span>Categories</span> ({{ len .Site.Taxonomies.categories }})</h1>
         <ul>
           {{- range $index, $taxonomy := .Site.Taxonomies.categories.Alphabetical
           -}}
@@ -80,7 +80,7 @@
       </div>
       <div class="bg-baldfabi-dark1 p-8">
         {{- $tagsCount := len .Site.Taxonomies.tags -}}
-        <h2><span>Tags</span> ({{ $tagsCount }})</h2>
+        <h1><span>Tags</span> ({{ $tagsCount }})</h1>
         <ul class="tags">
           {{- range $index, $taxonomy := .Site.Taxonomies.tags.ByCount -}}
           {{- $name := $taxonomy.Name -}}
