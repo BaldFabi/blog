@@ -25,6 +25,52 @@
     }
   }
 
+  main {
+    p,
+    ul,
+    ol,
+    pre,
+    table,
+    section,
+    hr,
+    figure,
+    .highlight {
+      @apply mb-8;
+    }
+
+    hr {
+      height: 0px;
+      @apply border-t border-baldfabi-accent;
+    }
+
+    .bg-baldfabi-dark1 {
+      *:last-child {
+        @apply mb-0;
+      }
+    }
+
+    #content {
+      p a,
+      ul a {
+        @apply text-baldfabi-accent hover:text-baldfabi-white transition-colors duration-300;
+      }
+
+      .paginator {
+        @apply flex space-x-1 justify-center mt-12;
+
+        li {
+          @apply rounded-full bg-baldfabi-dark1 w-8 h-8 text-center block;
+
+          a {
+            @apply h-full w-full block text-baldfabi-white hover:bg-baldfabi-accent rounded-full hover:text-baldfabi-dark1;
+
+            line-height: 2rem;
+          }
+        }
+      }
+    }
+  }
+
   #single {
     h2 {
       @apply text-2xl mb-6 pt-16;
@@ -114,51 +160,6 @@
 
     section.footnotes p {
       @apply mb-0;
-    }
-  }
-
-  main {
-    p,
-    ul,
-    ol,
-    pre,
-    table,
-    section,
-    hr,
-    figure {
-      @apply mb-8;
-    }
-
-    hr {
-      height: 0px;
-      @apply border-t border-baldfabi-accent;
-    }
-
-    .bg-baldfabi-dark1 {
-      *:last-child {
-        @apply mb-0;
-      }
-    }
-
-    #content {
-      p a,
-      ul a {
-        @apply text-baldfabi-accent hover:text-baldfabi-white transition-colors duration-300;
-      }
-
-      .paginator {
-        @apply flex space-x-1 justify-center mt-12;
-
-        li {
-          @apply rounded-full bg-baldfabi-dark1 w-8 h-8 text-center block;
-
-          a {
-            @apply h-full w-full block text-baldfabi-white hover:bg-baldfabi-accent rounded-full hover:text-baldfabi-dark1;
-
-            line-height: 2rem;
-          }
-        }
-      }
     }
   }
 
